@@ -5,7 +5,7 @@
 
 
 const shoppingList = [
-  { product: 'Milk', quantity: 1, price: 1, cost: 1, isBought: true },
+  { product: 'Milk', quantity: 1, price: 10, cost: 10, isBought: true },
   { product: 'Bread', quantity: 2, price: 1.5, cost: 3, isBought: false },
   { product: 'Eggs', quantity: 4, price: 0.75, cost: 3, isBought: false },]
 
@@ -90,28 +90,45 @@ console.log(shoppingList)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Максимум
 
 // Підрахунок суми всіх продуктів (враховуючи кількість кожного) в списку.
+
+
+function sum() {
+  
+  let totalSum = 0;
+  for (let i = 0; i < shoppingList.length; i++) {
+    totalSum += shoppingList[i].quantity * shoppingList[i].price
+  }
+
+  return totalSum
+}
+
+const totalSum = sum()
+console.log(totalSum)
+
 // Підрахунок суми всіх (не) придбаних продуктів.
+
+function sumNotBought() {
+
+  let totalSum = 0;
+  for (let i = 0; i < shoppingList.length; i++) {
+    if (shoppingList[i].isBought === false) {
+      totalSum += shoppingList[i].quantity * shoppingList[i].price
+    }
+  }
+
+  return totalSum
+}
+
+// const sumOfNotBought = sumNotBought()
+// console.log(sumOfNotBought)
+
+
+
+
 // Показання продуктів в залежності від суми, (від більшого до меншого / від меншого до більшого, в залежності від параметра функції, який вона приймає)
+
+
+

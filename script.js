@@ -5,29 +5,29 @@
 
 
 const shoppingList = [
-  { product: 'Milk', quantity: 1, isBought: true, price: 1, sum: 1 },
-  { product: 'Bread', quantity: 2, isBought: false, price: 1.5, sum: 3 },
-  { product: 'Eggs', quantity: 4, isBought: false, price: 0.75, sum: 3 },]
-  
-  const sortedSL = []
-  
-  function notBoughtPriority() {
-    for (let i = 0; i < shoppingList.length; i++) {
-      if (shoppingList[i].isBought === false) {
-        sortedSL.push(shoppingList[i])
-      }
+  { product: 'Milk', quantity: 1, price: 1, cost: 1, isBought: true },
+  { product: 'Bread', quantity: 2, price: 1.5, cost: 3, isBought: false },
+  { product: 'Eggs', quantity: 4, price: 0.75, cost: 3, isBought: false },]
+
+const sortedSL = []
+
+function notBoughtPriority() {
+  for (let i = 0; i < shoppingList.length; i++) {
+    if (shoppingList[i].isBought === false) {
+      sortedSL.push(shoppingList[i])
     }
-    
-    for (let i = 0; i < shoppingList.length; i++) {
-      if (shoppingList[i].isBought === true) {
-        sortedSL.push(shoppingList[i])
-      }
-    }
-    console.log(sortedSL)
   }
-  
-  // notBoughtPriority()
-  
+
+  for (let i = 0; i < shoppingList.length; i++) {
+    if (shoppingList[i].isBought === true) {
+      sortedSL.push(shoppingList[i])
+    }
+  }
+  console.log(sortedSL)
+}
+
+// notBoughtPriority()
+
 // Покупка продукту. Функція приймає назву продукту і відзначає його як придбаний.
 function purchase(product) {
 
@@ -43,32 +43,73 @@ function purchase(product) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Норма
 
 // Видалення продукту зі списку (видалення повинно проводитися шляхом створення нового масиву, в якому продукт, що ми шукаємо, буде відсутнім)
+
+const updatedSLAfterDeletion = []
+
+function deleteItem(item) {
+  for (let i = 0; i < shoppingList.length; i++) {
+
+    updatedSLAfterDeletion.push(shoppingList[i])
+
+    if (updatedSLAfterDeletion[i].product === item) {
+      updatedSLAfterDeletion.splice(i, 1)
+    }
+  }
+}
+
+// deleteItem('Eggs')
+// console.log(updatedSLAfterDeletion)
+
+
+
 // Додавання покупки в список. Враховуй, що при додаванні покупки з уже існуючим в списку продуктом, необхідно збільшувати кількість в існуючій покупці, а не додавати нову. При цьому також повинна змінитися сума, наприклад, якщо ціна за одиницю 12, а кількості товарів стало 2, то сума буде 24.
+
+function addProduct(product, quantity, price) {
+  for (let i = 0; i < shoppingList.length; i++) {
+    const item = shoppingList[i];
+
+    if (item.product === product && item.price === price && !item.isBought) {
+      item.quantity += quantity
+      item.cost = item.quantity * price
+      return
+    }
+  }
+
+  const item = { product, quantity, price, cost: quantity * price, isBought: false }
+
+  shoppingList.push(item)
+}
+
+
+addProduct('Bread', 1, 1)
+
+console.log(shoppingList)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Максимум
 
 // Підрахунок суми всіх продуктів (враховуючи кількість кожного) в списку.

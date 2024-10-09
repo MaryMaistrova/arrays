@@ -110,20 +110,20 @@ console.log(totalSum)
 
 // Підрахунок суми всіх (не) придбаних продуктів.
 
-function sumNotBought() {
+function sumNotBought(items) {
 
-  let totalSum = 0;
-  for (let i = 0; i < shoppingList.length; i++) {
-    if (shoppingList[i].isBought === false) {
-      totalSum += shoppingList[i].quantity * shoppingList[i].price
+  let runningTotal = 0;
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].isBought === false) {
+      runningTotal += items[i].quantity * items[i].price
     }
   }
 
-  return totalSum
+  return runningTotal
 }
 
-// const sumOfNotBought = sumNotBought()
-// console.log(sumOfNotBought)
+const sumOfNotBought = sumNotBought(shoppingList)
+console.log(sumOfNotBought)
 
 
 

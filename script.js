@@ -26,7 +26,7 @@ function notBoughtPriority() {
   console.log(sortedSL)
 }
 
-// notBoughtPriority()
+notBoughtPriority()
 
 // Покупка продукту. Функція приймає назву продукту і відзначає його як придбаний.
 function purchase(product) {
@@ -39,16 +39,13 @@ function purchase(product) {
   console.log(shoppingList)
 }
 
-// purchase('Eggs')
-
+purchase('Eggs')
 
 
 // Норма
-
 // Видалення продукту зі списку (видалення повинно проводитися шляхом створення нового масиву, в якому продукт, що ми шукаємо, буде відсутнім)
 
 const updatedSLAfterDeletion = []
-
 function deleteItem(item) {
   for (let i = 0; i < shoppingList.length; i++) {
 
@@ -60,9 +57,8 @@ function deleteItem(item) {
   }
 }
 
-// deleteItem('Eggs')
-// console.log(updatedSLAfterDeletion)
-
+deleteItem('Eggs')
+console.log(updatedSLAfterDeletion)
 
 
 // Додавання покупки в список. Враховуй, що при додаванні покупки з уже існуючим в списку продуктом, необхідно збільшувати кількість в існуючій покупці, а не додавати нову. При цьому також повинна змінитися сума, наприклад, якщо ціна за одиницю 12, а кількості товарів стало 2, то сума буде 24.
@@ -83,11 +79,8 @@ function addProduct(product, quantity, price) {
   shoppingList.push(item)
 }
 
-
 addProduct('Bread', 1, 1)
-
 console.log(shoppingList)
-
 
 
 // Максимум
@@ -96,7 +89,7 @@ console.log(shoppingList)
 
 
 function sum() {
-  
+
   let totalSum = 0;
   for (let i = 0; i < shoppingList.length; i++) {
     totalSum += shoppingList[i].quantity * shoppingList[i].price
@@ -107,6 +100,7 @@ function sum() {
 
 const totalSum = sum()
 console.log(totalSum)
+
 
 // Підрахунок суми всіх (не) придбаних продуктів.
 
@@ -126,9 +120,15 @@ const sumOfNotBought = sumNotBought(shoppingList)
 console.log(sumOfNotBought)
 
 
-
-
 // Показання продуктів в залежності від суми, (від більшого до меншого / від меншого до більшого, в залежності від параметра функції, який вона приймає)
 
+function sort(condition) {
+  if (condition === 'ascending') {
+    shoppingList.sort((a, b) => a.cost - b.cost);
+  } else shoppingList.sort((a, b) => b.cost - a.cost);
+  return shoppingList
+}
 
-
+// expects ascending or descending
+const asdc = sort('descending')
+console.log(asdc)
